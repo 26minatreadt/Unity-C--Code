@@ -38,7 +38,20 @@ public class InventorySystem : MonoBehaviour {
 
     void DisplayInventory() {
         foreach (var item in collectedItems) {
-            Debug.Log(item.name + " is in the inventory");
+            if(collectedItems.Contains(item)) {
+                Debug.Log(item.name + " is in the inventory");
+            }
+            else {
+                Debug.Log(item.name + " is not yet collected.");
+            }
         }
+    }
+
+    void UseItem(string itemName) {
+        
+    }
+
+    void RemoveItem(string itemName) {
+        
     }
 }
