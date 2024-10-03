@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventorySystem : MonoBehaviour {
+public class InventorySystem : MonoBehaviour 
+{
     public GameObject potionPrefab;
     public GameObject swordPrefab;
     
@@ -11,8 +12,8 @@ public class InventorySystem : MonoBehaviour {
     private Dictionary<string, GameObject> itemInventory = new Dictionary<string, GameObject>();
     private HashSet<GameObject> collectedItems = new HashSet<GameObject>();
 
-    void Start() {
-
+    void Start() 
+    {
         itemInventory.Add("Potion", potionPrefab);
         itemInventory.Add("Sword", swordPrefab);
         itemInventory.Add("Shield", shieldPrefab);
@@ -23,35 +24,46 @@ public class InventorySystem : MonoBehaviour {
         DisplayInventory();
     }
 
-    void CollectItem(string itemName) {
-        if (itemInventory.ContainsKey(itemName)) {
+    void CollectItem(string itemName) 
+    {
+        if (itemInventory.ContainsKey(itemName)) 
+        {
             GameObject item = itemInventory[itemName];
-            if (!collectedItems.Contains(item)) {
-                collectedItems.Add(item);
+            if (!collectedItems.Contains(item)) //if to check check if the user has the item
+            {
+                collectedItems.Add(item); //adds the item the user is trying to add
                 Debug.Log($"{itemName} collected");
             }
-            else {
+            else //else to let the user know the item is collected
+            {
                 Debug.Log($"{itemName} is already collected");
             }
         }
     }
 
-    void DisplayInventory() {
-        foreach (var item in collectedItems) {
-            if(collectedItems.Contains(item)) {
+    void DisplayInventory() 
+    {
+        foreach (var item in collectedItems) 
+        {
+            if(collectedItems.Contains(item)) 
+            {
                 Debug.Log(item.name + " is in the inventory");
             }
-            else {
+            else 
+            {
                 Debug.Log(item.name + " is not yet collected.");
             }
         }
     }
 
-    void UseItem(string itemName) {
+    void UseItem(string itemName) 
+    {
         
+
     }
 
-    void RemoveItem(string itemName) {
-        
+    void RemoveItem(string itemName) 
+    {
+
     }
 }

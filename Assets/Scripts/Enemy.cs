@@ -9,13 +9,15 @@ public class Enemy : Character
     public int damage = 10;
 
 
-    void Start() {
+    void Start() 
+    {
         characterName = enemyName;
         health = 50;
         Debug.Log($"{characterName} has {health} health points");
     }
     
-    public void Attack() {
+    public void Attack() 
+    {
         Debug.Log($"{characterName} attacks dealing {damage} damage.");
     }
 
@@ -29,7 +31,8 @@ public class Enemy : Character
         }
     }
 
-    void Update() {
+    void Update() 
+    {
         //movement input
         if (Input.GetKeyDown(KeyCode.A)) {
             Attack();

@@ -10,12 +10,14 @@ public class Player : Character
     public float jumpHeight = 2.0f;
 
 
-    void Start() {
+    void Start()
+    {
         characterName = playerName;
         health = 100;
         Debug.Log($"{characterName} has {health} health points");
     }
-    public override void Move() {
+    public override void Move() 
+    {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -25,11 +27,13 @@ public class Player : Character
 
         Debug.Log($"{characterName} is moving forward.");
     }
-    public void Jump() {
+    public void Jump() 
+    {
         Debug.Log($"{characterName} is jumping with jump height {jumpHeight}");
     }
 
-    void Update() {
+    void Update() 
+    {
         //movement input
         if (Input.GetKeyDown(KeyCode.Space)) {
             Move();
