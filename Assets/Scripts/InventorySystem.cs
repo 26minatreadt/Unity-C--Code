@@ -15,21 +15,24 @@ public class InventorySystem : MonoBehaviour
 
     void Start() 
     {
+        //Declares the Potion, Sword, and Shield Variables
         itemInventory.Add("Potion", potionPrefab);
         itemInventory.Add("Sword", swordPrefab);
         itemInventory.Add("Shield", shieldPrefab);
 
+        //grants the user a Potion and Sword on Script Start
         CollectItem("Potion");
         CollectItem("Sword");
 
+        //shows the user their inventory
         DisplayInventory();
     }
 
     void CollectItem(string itemName) 
     {
-        if (itemInventory.ContainsKey(itemName)) 
+        if (itemInventory.ContainsKey(itemName)) //checks for the item
         {
-            GameObject item = itemInventory[itemName];
+            GameObject item = itemInventory[itemName]; //assigns itemName to an item (itemName = Potion)
             if (!collectedItems.Contains(item)) //if to check check if the user has the item
             {
                 collectedItems.Add(item); //adds the item the user is trying to add
@@ -46,33 +49,36 @@ public class InventorySystem : MonoBehaviour
     {
         foreach (var item in collectedItems) 
         {
-            if(collectedItems.Contains(item)) 
+            if(collectedItems.Contains(item))  //checks if the user has the item
             {
+                //lets the user know the item is now in the inventory
                 Debug.Log(item.name + " is in the inventory");
             }
             else 
             {
+                //Lets the user know the item hasn't been collected
                 Debug.Log(item.name + " is not yet collected.");
             }
         }
     }
 
-    void UseItem(string itemName) 
+    void UseItem(string itemName) //method the Use an Item
     {
-        if (itemInventory.ContainsKey(itemName))
+        if (itemInventory.ContainsKey(itemName)) //checks for the item
         {
-            GameObject item = itemInventory[itemName];
-            if(collectedItems.Contains(item))
+            GameObject item = itemInventory[itemName]; //assigns itemName to an item (itemName = Potion)
+            if(collectedItems.Contains(item)) //checks if the player has the item
             {
-                Debug.Log($"Using {itemName}");
+                Debug.Log($"Using {itemName}"); //uses the item
 
                 Instantiate(item, new Vector3(0, 0, 0), Quaternion.identity);
 
-                collectedItems.Remove(item);
+                collectedItems.Remove(item); //removes the item from the player
                 Debug.Log($"{itemName} has been used and removed from the inventory.");
             }
             else
             {
+                //lets the player know that item isnt in the inventory to use 
                 Debug.Log($"{itemName} is not avaliabe in the inventory to use");
             }
         }
@@ -81,6 +87,22 @@ public class InventorySystem : MonoBehaviour
 
     void RemoveItem(string itemName) 
     {
-
+        if(itemInventory.ContainsKey(itemName))
+        {
+            GameObject item = itemInventory[itemName];
+            if(collectedItems.Contains(item))
+            {
+                collectedItems.Remove(item); // removes the item from the user
+                Debug.Log($"{itemName} removed from the inventory");
+            }
+            else
+            {
+                Debug.Log($"{itemName} is not in the inventory.");
+            }
+        }
+        else
+        {
+            Debug.Log($"{itemName} doesnt exist in the item inventory.");
+        }
     }
 }
