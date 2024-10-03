@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventorySystem : MonoBehaviour 
@@ -58,7 +59,23 @@ public class InventorySystem : MonoBehaviour
 
     void UseItem(string itemName) 
     {
-        
+        if (itemInventory.ContainsKey(itemName))
+        {
+            GameObject item = itemInventory[itemName];
+            if(collectedItems.Contains(item))
+            {
+                Debug.Log($"Using {itemName}");
+
+                Instantiate(item, new Vector3(0, 0, 0), Quaternion.identity);
+
+                collectedItems.Remove(item);
+                Debug.Log($"{itemName} has been used and removed from the inventory.");
+            }
+            else
+            {
+                Debug.Log($"{itemName} is not avaliabe in the inventory to use");
+            }
+        }
 
     }
 
