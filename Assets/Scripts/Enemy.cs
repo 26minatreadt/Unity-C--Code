@@ -24,8 +24,10 @@ public class Enemy : Character
     public override void TakeDamage(int damageRecieved)
     {
         base.TakeDamage(damageRecieved);
+
         Debug.Log($"{characterName} took {damageRecieved} damage, remaining health: {health}");
-        if(health <= 0) {
+        if(health <= 0) 
+        {
             Destroy(gameObject);
             Debug.Log($"{characterName} has been defeated");
         }
