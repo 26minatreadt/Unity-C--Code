@@ -58,4 +58,6 @@ public class GameManager : MonoBehaviour
     {
         // Currently empty - can be used to check for player input or game updates
     }
+
+    // Consider adding a way to call DropLastItem() if needed
 }

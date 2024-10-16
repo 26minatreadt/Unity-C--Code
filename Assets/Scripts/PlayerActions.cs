@@ -35,7 +35,7 @@ public class PlayerActions : MonoBehaviour
         if(actionStack.Count > 0) // Check if there are any actions to undo
         {
             string undoneAction = actionStack.Pop(); // Pop the last action from the stack
-            Debug.Log("Undod action:" + undoneAction); // Log the undone action
+            Debug.Log("Undone action: " + undoneAction); // Fixed typo from "Undod" to "Undone"
         }
         else
         {

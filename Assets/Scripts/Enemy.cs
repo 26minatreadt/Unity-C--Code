@@ -16,7 +16,7 @@ public class Enemy : Character
         characterName = enemyName;
 
         // Set the health of the enemy
-        health = 50;
+        health = 50; // Ensure this is the intended health for the enemy
 
         // Log the enemy's initial health points
         Debug.Log($"{characterName} has {health} health points");

@@ -26,8 +26,8 @@ public class Character : MonoBehaviour
     // Virtual method for taking damage, which can be overridden by derived classes
     public virtual void TakeDamage(int damage) 
     {
-        // Reduce the character's health by the specified damage amount
-        health -= damage;
+        // Reduce the character's health by the specified damage amount, preventing negative health
+        health = Mathf.Max(0, health - damage);
 
         // Log the amount of damage taken and the remaining health
         Debug.Log($"{characterName} takes {damage} damage, remaining health : {health}");

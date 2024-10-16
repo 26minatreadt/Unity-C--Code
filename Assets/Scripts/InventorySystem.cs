@@ -109,24 +109,21 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
+    public UnityEngine.UI.Text inventoryText; // Ensure this is defined
+
     void UpdateInventoryUI()
     {
-        // Initialize the inventory UI text with a heading
-        inventoryText.text = "Inventory: \n";
-
-        // Iterate through each item in the inventory
+        inventoryText.text = "Inventory: \n"; // Initialize the inventory UI text with a heading
         foreach (var item in itemInventory)
         {
             // Check if the item has been collected
-            if (collectedItems.Contains(item.Value)) // Corrected from "InventorySystem.Value" to "item.Value"
+            if (collectedItems.Contains(item.Value)) 
             {
-                // Add the item name to the UI text as "Collected"
-                inventoryText.text += item.Key + " - Collected\n"; // Corrected from "item.key" to "item.Key"
+                inventoryText.text += item.Key + " - Collected\n"; 
             }
             else
             {
-                // Add the item name to the UI text as "Not Collected"
-                inventoryText.text += item.Key + " - Not Collected\n"; // Corrected from "item.key" to "item.Key"
+                inventoryText.text += item.Key + " - Not Collected\n"; 
             }
         }
     }
